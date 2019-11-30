@@ -28,6 +28,7 @@ There are six different test cases:
 $ python regression_conv_100.py
 ```
 **Output**
+
 *Note: these file can be used by the jupyter notebook file prl_rotation_fig_v2.ipynb.*
 
  *  *loss_conv_cifar10.csv* (loss of convolution layer with CIFAR-10 dataset)
@@ -42,6 +43,7 @@ $ python regression_conv_100.py
 $ python regression_q9_100.py
 ```
 **Output**:
+
 *Note: these file can be used by the jupyter notebook file prl_rotation_fig_v2.ipynb.*
 
  *  *loss_q9_cifar10.csv* (loss of Q9 layer with CIFAR-10 dataset)
