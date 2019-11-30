@@ -9,30 +9,62 @@ to rotation angles.
 
 ## Requirements
 
-- Python (3.7)
-- keras (2.2.4)
-- tensorflow (1.13)
-- opencv-python (4.0.0.21)
-- pandas (0.24.2)
-- argparse (1.4.0)
+- Python (>=3.7)
+- keras (>=2.2.4)
+- tensorflow (1.15)
+- opencv (>=4.1.2)
+- pandas (>=0.25.3)
+- scikit-image (>=0.15.0)
+- matplotlib (>=3.1.2)
 
 ## Usage
-There are three different test cases:
-1) 100 MNIST digits with plane rotations and a CNN.
-2) 100 MNIST digits with plane rotations, application of the Q9 and a MLP.
+There are six different test cases:
+1) 100 MNIST digits and 100 CIFAR-10 images with plane rotations and a CNN.
+2) 100 MNIST digits and 100 CIFAR-10 images with plane rotations, application of the Q9 and a MLP.
 3) Comparation of a CNN and Q9 with contrast degradation.
 
-Case # 1
+### Case # 1
 ```
 $ python regression_conv_100.py
 ```
+**Output**
+ *  *loss_conv_cifar10.csv* (loss of convolution layer with CIFAR-10 dataset)
+ *  *loss_conv_mnist.csv* (loss of convolution layer with MNIST dataset)
+ *  *val_loss_conv_cifar10.csv* (validation loss of convolution layer with CIFAR-10 dataset)
+ *  *val_loss_conv_mnist.csv* (validation loss of convolution layer with MNIST dataset)
+ *  *prediction_conv_cifar10.csv* (prediction/inference of convolution layer with CIFAR-10 dataset)
+ *  *prediction_conv_mnist.csv* (prediction/inference of convolution layer with MNIST dataset)
 
-Case # 2
+### Case # 2
 ```
-$ python regression_dense_100.py
+$ python regression_q9_100.py
 ```
+**Output**:
+ *  *loss_q9_cifar10.csv* (loss of Q9 layer with CIFAR-10 dataset)
+ *  *loss_q9_mnist.csv* (loss of Q9 layer with MNIST dataset)
+ *  *val_loss_q9_cifar10.csv* (validation loss of Q9 layer with CIFAR-10 dataset)
+ *  *val_loss_q9_mnist.csv* (validation loss of Q9 layer with MNIST dataset)
+ *  *prediction_q9_cifar10.csv* (prediction/inference of Q9 layer with CIFAR-10 dataset)
+ *  *prediction_q9_mnist.csv* (prediction/inference of Q9 layer with MNIST dataset)
 
-Case # 3
+### Case # 3
 ```
-$ python q9vsconlayer.py --batchsize 128 --epochs 100 --eta 0.001
+---------------------------------------------------------------------
+usage: q9vsconlayer.py [-h] -b BATCHSIZE -e EPOCHS -l ETA -d DATA
+
+Q9/CNN MNIST/CIFAR-10
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -b BATCHSIZE, --batchsize BATCHSIZE
+                        Batch size
+  -e EPOCHS, --epochs EPOCHS
+                        Epochs
+  -l ETA, --eta ETA     Learning rate
+  -d DATA, --data DATA  Dataset (0) MNIST, (1) CIFAR-10
+---------------------------------------------------------------------
+
+$ python q9vsconlayer.py --batchsize 128 --epochs 100 --eta 0.0001 -d 0
 ```
+**Output**:
+ *  Folder *models* that contains weights of CNN and Q9 layers.
